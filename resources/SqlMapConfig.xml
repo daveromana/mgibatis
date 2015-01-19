@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+			"http://www.ibatis.com/dtd/sql-map-config-2.dtd" >
+<sqlMapConfig>
+	<!-- 配置ibatis/mybatis的系统参数 -->
+	<settings useStatementNamespaces="true"/>
+	<typeAlias type="com.mgang.domain.MGUser" alias="MGUser"/>
+	<!-- 配置数据源与连接池 -->
+	<transactionManager type="JDBC">
+		<dataSource type="simple">
+			<property name="JDBC.Driver" value="com.mysql.jdbc.Driver"/>
+			<property name="JDBC.ConnectionURL" value="jdbc:mysql://127.0.0.1:3306/test"/>
+			<property name="JDBC.Username" value="root"/>
+			<property name="JDBC.Password" value="root"/>
+		</dataSource>
+	</transactionManager>
+	<!-- 加载要管理的Mapping -->
+	<sqlMap resource="MGUser.xml"/>
+</sqlMapConfig>

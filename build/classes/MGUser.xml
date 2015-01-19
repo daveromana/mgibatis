@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="MGUser">
+	<select id="getAll" resultClass="MGUser">
+		select * from user
+	</select>
+	
+	<select id="getUserById" resultClass="MGUser">
+		select * from user where id=#id#
+	</select>
+	
+	<insert id="insertOne" parameterClass="MGUser">
+		insert into user (username,nickname,password,addTime,loginCount) 
+		values (#userName#,#nickName#,#password#,#addTime#,#loginCount#)
+	</insert>
+	
+	<delete id="deleteById">
+		delete from user where id =#id#
+	</delete>
+	
+	<update id="updateById" parameterClass="MGUser">
+		update user set 
+		username=#userName#,
+		nickname=#nickName#,
+		password=#password#,
+		addTime=#addTime#,
+		loginCount=#loginCount#
+		where id =#id#
+	</update>
+</sqlMap>
