@@ -67,4 +67,10 @@ public class TestIbatis {
 			System.out.println(u.toString());
 		}
 	}
+	
+	@Test
+	public void testProcedure() throws SQLException{
+		MGUser u = (MGUser) sqlMap.queryForObject("MGUser.procedure",3);
+		System.out.println(u.toString());
+	}
 }

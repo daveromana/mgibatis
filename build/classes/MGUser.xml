@@ -41,4 +41,12 @@
 		loginCount=#loginCount#
 		where id =#id#
 	</update>
+	
+	<parameterMap class="java.lang.Integer" id="idParam">
+		<parameter property="p2" jdbcType="int" mode="IN"/>
+	</parameterMap>
+	
+	<procedure id="procedure" resultClass="MGUser" parameterMap="idParam">
+		{call showData(?)}
+	</procedure>
 </sqlMap>
