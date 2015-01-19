@@ -16,7 +16,7 @@ public class MGUser {
 	private Integer loginCount;
 	
 	public MGUser(){}
-	//生成构�?�函�?	
+	//生成构造函数
 	public MGUser(String userName, String nickName, String password,
 			Date addTime, Integer loginCount) {
 		super();
@@ -63,5 +63,11 @@ public class MGUser {
 		this.loginCount = loginCount;
 	}
 	
+	@Override
+	public String toString() {
+		return "MGUser [id=" + id + ", userName=" + userName + ", nickName="
+				+ nickName + ", password=" + password + ", addTime=" + addTime
+				+ ", loginCount=" + loginCount + "]";
+	}
 	
 }

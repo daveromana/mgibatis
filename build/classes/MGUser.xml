@@ -2,7 +2,20 @@
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
 			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="MGUser">
+	<resultMap class="MGUser" id="selectResult">
+		<result property="id" column="id"/>
+		<result property="userName" column="userName"/>
+		<result property="nickName" column="nickName"/>
+		<result property="password" column="password"/>
+		<result property="addTime" column="addTime"/>
+		<result property="loginCount" column="loginCount"/>
+	</resultMap>
+
 	<select id="getAll" resultClass="MGUser">
+		select * from user
+	</select>
+	
+	<select id="getAllToResultMap" resultMap="selectResult">
 		select * from user
 	</select>
 	
@@ -11,7 +24,7 @@
 	</select>
 	
 	<insert id="insertOne" parameterClass="MGUser">
-		insert into user (username,nickname,password,addTime,loginCount) 
+		insert into user (userName,nickName,password,addTime,loginCount) 
 		values (#userName#,#nickName#,#password#,#addTime#,#loginCount#)
 	</insert>
 	
@@ -21,8 +34,8 @@
 	
 	<update id="updateById" parameterClass="MGUser">
 		update user set 
-		username=#userName#,
-		nickname=#nickName#,
+		userName=#userName#,
+		nickName=#nickName#,
 		password=#password#,
 		addTime=#addTime#,
 		loginCount=#loginCount#

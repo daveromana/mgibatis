@@ -58,4 +58,13 @@ public class TestIbatis {
 		sqlMap.update("MGUser.updateById",u);
 		System.out.println("update success");
 	}
+	
+	@Test
+	public void testSelectResultMap() throws SQLException{
+		//sqlMap.queryForList("MGUser.getAllToResultMap")返回的还是对象集合
+		List<MGUser> users = sqlMap.queryForList("MGUser.getAllToResultMap");
+		for(MGUser u : users){
+			System.out.println(u.toString());
+		}
+	}
 }
