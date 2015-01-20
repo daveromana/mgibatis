@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.io.Reader;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -29,12 +31,13 @@ public class TestIbatis {
 		try {
 			List<MGUser> users = sqlMap.queryForList("MGUser.getAll",null);
 			for(MGUser u : users){
-				System.out.println(u.getNickName());
+				System.out.println(u.toString());
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("select success");
 	}
 	@Test
 	public void testInsert() throws SQLException{
@@ -52,7 +55,7 @@ public class TestIbatis {
 	
 	@Test
 	public void testUpdate() throws SQLException{
-		MGUser u = (MGUser) sqlMap.queryForObject("MGUser.getUserById", 3);
+		MGUser u = (MGUser) sqlMap.queryForObject("MGUser.getUserById", 13);
 		u.setNickName("大东");
 		u.setUserName("dadong");
 		sqlMap.update("MGUser.updateById",u);
@@ -66,11 +69,17 @@ public class TestIbatis {
 		for(MGUser u : users){
 			System.out.println(u.toString());
 		}
+		System.out.println("resultMap success");
 	}
 	
 	@Test
 	public void testProcedure() throws SQLException{
-		MGUser u = (MGUser) sqlMap.queryForObject("MGUser.procedure",3);
+		Map p = new HashMap();
+		p.put("p2", 13);
+		MGUser u = (MGUser) sqlMap.queryForObject("MGUser.procedure",p);
 		System.out.println(u.toString());
+		System.out.println("procedure success");
+		
 	}
+	
 }

@@ -7,13 +7,23 @@
 	<typeAlias type="com.mgang.domain.MGUser" alias="MGUser"/>
 	<!-- 配置数据源与连接池 -->
 	<transactionManager type="JDBC">
+		<!-- mysql数据源
 		<dataSource type="simple">
 			<property name="JDBC.Driver" value="com.mysql.jdbc.Driver"/>
 			<property name="JDBC.ConnectionURL" value="jdbc:mysql://127.0.0.1:3306/test"/>
 			<property name="JDBC.Username" value="root"/>
 			<property name="JDBC.Password" value="root"/>
 		</dataSource>
+		 -->
+		 <!-- oracle数据源 -->
+		 <dataSource type="simple">
+			<property name="JDBC.Driver" value="oracle.jdbc.driver.OracleDriver"/>
+			<property name="JDBC.ConnectionURL" value="jdbc:oracle:thin:@127.0.0.1:1521:mgang"/>
+			<property name="JDBC.Username" value="system"/>
+			<property name="JDBC.Password" value="meigang"/>
+		</dataSource>
 	</transactionManager>
 	<!-- 加载要管理的Mapping -->
-	<sqlMap resource="MGUser.xml"/>
+	<!--  <sqlMap resource="MGUser.xml"/>  -->
+	<sqlMap resource="OMGUser.xml"/>
 </sqlMapConfig>

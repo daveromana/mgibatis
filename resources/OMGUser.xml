@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="MGUser">
+	<resultMap class="MGUser" id="selectResult">
+		<result property="id" column="id"/>
+		<result property="userName" column="userName"/>
+		<result property="nickName" column="nickName"/>
+		<result property="password" column="password"/>
+		<result property="addTime" column="addTime"/>
+		<result property="loginCount" column="loginCount"/>
+	</resultMap>
+
+	<select id="getAll" resultClass="MGUser">
+		select * from mguser
+	</select>
+	
+	<select id="getAllToResultMap" resultMap="selectResult">
+		select * from mguser
+	</select>
+	
+	<select id="getUserById" resultClass="MGUser">
+		select * from mguser where id=#id#
+	</select>
+	
+	<insert id="insertOne" parameterClass="MGUser">
+		insert into mguser (id,userName,nickName,password,addTime,loginCount) 
+		values (autoReq.nextval,#userName#,#nickName#,#password#,#addTime#,#loginCount#)
+	</insert>
+	
+	<delete id="deleteById">
+		delete from mguser where id =#id#
+	</delete>
+	
+	<update id="updateById" parameterClass="MGUser">
+		update mguser set 
+		userName=#userName#,
+		nickName=#nickName#,
+		password=#password#,
+		addTime=#addTime#,
+		loginCount=#loginCount#
+		where id =#id#
+	</update>
+	
+	<parameterMap class="java.util.Map" id="omap">
+		<parameter property="p2" jdbcType="int" mode="IN"/>
+		 <parameter property="out" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="procedure" resultClass="MGUser" parameterMap="omap">
+		{call mguserPackage.showData(?,?)}
+	</procedure>
+</sqlMap>
