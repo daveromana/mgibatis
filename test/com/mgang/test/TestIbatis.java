@@ -1,7 +1,6 @@
 package com.mgang.test;
 
 import java.io.IOException;
-import java.io.Reader;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
@@ -11,18 +10,15 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
-import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.mgang.domain.MGUser;
+import com.mgang.factory.IbatisFactory;
 
 public class TestIbatis {
 	private static SqlMapClient sqlMap;
 	@Before
 	public void before() throws IOException{
-		Reader reader = Resources.getResourceAsReader("SqlMapConfig.xml");
-		//从SqlMapConfig.xml中构建SqlMapClient
-		sqlMap = SqlMapClientBuilder.buildSqlMapClient(reader);
+		sqlMap = IbatisFactory.getSqlMapClient();
 	}
 	
 	@Test
