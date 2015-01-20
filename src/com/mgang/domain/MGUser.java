@@ -66,7 +66,7 @@ public class MGUser {
 	@Override
 	public String toString() {
 		return "MGUser [id=" + id + ", userName=" + userName + ", nickName="
-				+ nickName + ", password=" + password + ", addTime=" + addTime
+				+ nickName + ", password=" + password + ", addTime=" + addTime.toLocaleString()
 				+ ", loginCount=" + loginCount + "]";
 	}
 	
